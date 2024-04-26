@@ -1,0 +1,45 @@
+@startuml
+!define UML have nice day
+skinparam rectangle {
+    BackgroundColor<<database>> Wheat
+    BackgroundColor<<user>> LightBlue
+    BackgroundColor<<service>> LightGreen
+}
+
+package "Next.js Frontend" as Frontend {
+    frame "UI" {
+        rectangle "Left Pane - Live Preview" as LeftPane
+        rectangle "Right Pane - Chatbot" as RightPane
+    }
+}
+
+node "Chatbot Engine" as Chatbot {
+    component "LLM Query Handler" as QueryHandler
+    component "Command Processor" as CommandProcessor
+}
+
+database "Graph Database (Neo4j)" as Neo4j {
+}
+
+node "Code Generation" as CodeGen {
+    component "Code Builder" as CodeBuilder
+    component "Integration Manager" as IntegrationManager
+}
+
+[User] -> RightPane : interacts
+RightPane -> QueryHandler : sends commands
+QueryHandler -> CommandProcessor : interprets
+CommandProcessor -> Neo4j : queries
+Neo4j -> CodeBuilder : sends data
+CodeBuilder -> IntegrationManager : generates code
+IntegrationManager -> LeftPane : updates preview
+
+legend left
+  :Technologies:
+  -- 
+  Next.js + TypeScript : Frontend
+  Neo4j : Graph Database
+  Vercel AI SDK + OpenAI APIs : LLM Integration
+endlegend
+
+@enduml
