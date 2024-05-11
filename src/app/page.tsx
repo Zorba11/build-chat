@@ -1,14 +1,17 @@
-import Image from "next/image";
-import Chat from "./components/Chat";
-import BrowserPreview from "./components/BrowserPreview";
-import LeftPane from './components/LeftPane';
-import RightPane from './components/RightPane';
+import { Button } from "@/components/ui/button";
+import { AnimatePresence } from "framer-motion";
+import Link from "next/link";
+
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen h-[100vh] flex-row p-24">
-      <LeftPane />
-      <RightPane />
+    <main className="flex min-h-screen h-[100vh] flex-col items-center justify-center">
+      <Link href="/new-project" className="mb-4">
+      <Button className="w-32">Create New</Button>
+      </Link>
+      <Link href="/projects/1">
+        <Button className="w-32">Recent</Button>
+      </Link>
     </main>
   );
 }

@@ -4,7 +4,9 @@ type Props = {}
 
 const BrowserPreview = (props: Props) => {
   return (
-    <div className='h-full w-[55%] bg-slate-400'>BrowserPreview</div>
+    <>
+    <iframe src="http://localhost:3001" width="100%" height="100%" title="Preview Area"></iframe>
+  </>
   )
 }
 
