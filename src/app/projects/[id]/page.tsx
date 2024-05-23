@@ -12,13 +12,13 @@ const Projects = (props: Props) => {
   return (
     <AnimatePresence mode="wait">
       <PageTransition>
-        <main className="flex min-h-screen justify-center h-[100vh] gap-10 p-20">
+        <main className="flex flex-row min-h-screen h-[100%] w-[100%] p-5 mt-10">
           <LeftPane />
           <RightPane />
         </main>
       </PageTransition>
     </AnimatePresence>
-  )
+  );
 }
 
 export default Projects
