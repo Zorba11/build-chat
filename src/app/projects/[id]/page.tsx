@@ -1,12 +1,11 @@
-"use client"
-import Chat from '@/app/components/Chat'
-import LeftPane from '@/app/components/LeftPane'
-import RightPane from '@/app/components/RightPane'
-import PageTransition from '@/components/PageTransition'
-import { AnimatePresence } from 'framer-motion'
-import React from 'react'
+'use client';
+import LeftPane from '@/app/components/LeftPane';
+import RightPane from '@/app/components/RightPane';
+import PageTransition from '@/components/PageTransition';
+import { AnimatePresence } from 'framer-motion';
+import React from 'react';
 
-type Props = {}
+type Props = {};
 
 const Projects = (props: Props) => {
   return (
@@ -19,6 +18,6 @@ const Projects = (props: Props) => {
       </PageTransition>
     </AnimatePresence>
   );
-}
+};
 
-export default Projects
+export default Projects;

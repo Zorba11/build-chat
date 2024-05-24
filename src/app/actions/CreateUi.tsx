@@ -1,9 +1,9 @@
 'use server';
 
 import { createStreamableUI } from 'ai/rsc';
-import { GlowingStarsBackgroundCard } from './ui/glowing-stars';
+import { GlowingStarsBackgroundCard } from '../components/ui/glowing-stars';
 
-const CreatedUi = async () => {
+const createUi = async () => {
   const weatherUI = createStreamableUI();
 
   weatherUI.update(<div style={{ color: 'gray' }}>Loading...</div>);
@@ -22,4 +22,4 @@ const CreatedUi = async () => {
   return weatherUI.value;
 };
 
-export default CreatedUi;
+export default createUi;

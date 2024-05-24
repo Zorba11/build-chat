@@ -1,11 +1,23 @@
 import { useChat } from 'ai/react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
+import BrowserPreview from './BrowserPreview';
+import { useStores } from '@/store/useStores';
+import { CoreMessage } from 'ai';
 
 export default function Chat() {
   const { messages, input, handleInputChange, handleSubmit } = useChat();
+  const {
+    codePreviewStore: { generateUi },
+  } = useStores();
+
+  const handleClick = async () => {
+    await generateUi(messages as CoreMessage[]);
+  };
 
   return (
     <div className="flex flex-col w-full max-w-md p-4 mx-auto bg-white rounded-lg shadow-lg overflow-y-auto max-h-[80vh]">
+      <button onClick={handleClick}>Show Created UI</button>
       <AnimatePresence>
         {messages.map((m) => (
           <motion.div

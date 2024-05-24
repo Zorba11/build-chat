@@ -6,7 +6,7 @@ type Props = {};
 const LeftPane = (props: Props) => {
   return (
     <>
-      <BrowserPreview />
+      <BrowserPreview showCreatedUi={''} />
     </>
   );
 };
