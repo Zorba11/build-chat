@@ -12,11 +12,11 @@ const BrowserPreview = observer(({}: Props) => {
     <>
       {/* <iframe src="http://localhost:3001" width="100%" height="100%" title="Preview Area"></iframe> */}
       <div className="flex flex-col w-[60%] max-lg-md p-4 mx-auto bg-white rounded-lg shadow-lg overflow-y-auto max-h-[80vh]">
-        {generatedComponent && generatedComponent}
+        {generatedComponent}
       </div>
       {/* <GlowingStarsBackgroundCardPreview /> */}
     </>
   );
-});
+}); 
 
 export default BrowserPreview;

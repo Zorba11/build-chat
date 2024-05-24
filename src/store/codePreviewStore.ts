@@ -5,11 +5,11 @@ import { makeAutoObservable } from 'mobx';
 
 export interface ICodePreviewStore {
   generateUi: (messages: CoreMessage[]) => Promise<void>;
-  generatedComponent: JSX.Element | null;
+  generatedComponent: JSX.Element | null | string;
 }
 
 export class CodePreviewStore implements ICodePreviewStore {
-  generatedComponent: JSX.Element | null = null;
+  generatedComponent: JSX.Element | null | string = null;
   constructor() {
     makeAutoObservable(this);
     this.generatedComponent = null;
