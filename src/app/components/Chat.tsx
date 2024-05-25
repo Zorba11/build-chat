@@ -1,19 +1,42 @@
 import { useChat } from 'ai/react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
+import { use, useEffect, useState } from 'react';
 import BrowserPreview from './BrowserPreview';
 import { useStores } from '@/store/useStores';
 import { CoreMessage } from 'ai';
 
 export default function Chat() {
-  const { messages, input, handleInputChange, handleSubmit } = useChat();
-  const {
-    codePreviewStore: { generateUi },
-  } = useStores();
+    const { messages, input, handleInputChange, handleSubmit } = useChat();
+    const {
+      codePreviewStore: { generateUi },
+    } = useStores();
 
-  const handleClick = async () => {
-    await generateUi(messages as CoreMessage[]);
-  };
+    const handleClick = async () => {
+      await generateUi(messages as CoreMessage[]);
+    };
+
+    // const handleSubmitWrapper = async (event) => {
+    //   event.preventDefault();  // Prevent default form submission if handleSubmit doesn't do it.
+      
+    //   await handleSubmit(event);  // call original handleSubmit which sends the message.
+    
+    //   // Optionally, delay the UI generation to ensure response has been processed
+    //   setTimeout(() => {
+    //     generateUi(messages as CoreMessage[]);
+    //   }, 1000); // Adjust delay as needed based on typical response times or handle via callback.
+    // };
+
+    const [prevMessagesLength, setPrevMessagesLength] = useState(0);
+
+    useEffect(() => {
+      const currentMessagesLength = (messages as CoreMessage[]).length;
+      if (currentMessagesLength !== prevMessagesLength) {
+        generateUi(messages as CoreMessage[]);
+        setPrevMessagesLength(currentMessagesLength);
+      }
+    }, [messages.length]);
+
+
 
   return (
     <div className="flex flex-col w-full max-w-md p-4 mx-auto bg-white rounded-lg shadow-lg overflow-y-auto max-h-[80vh]">
@@ -37,7 +60,7 @@ export default function Chat() {
           </motion.div>
         ))}
       </AnimatePresence>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={ handleSubmit}>
         <input
           className="fixed bottom-5 right-30 w-[100%] max-w-md p-2 mb-8 border border-gray-300 rounded shadow-xl"
           value={input}

@@ -1,0 +1,92 @@
+.animation-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sky {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, #87CEEB, #FFFFFF);
+}
+
+.city-skyline {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 30%;
+  background: url('city-skyline.png') no-repeat bottom;
+  background-size: cover;
+}
+
+.sun {
+  position: absolute;
+  bottom: -10%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  background: yellow;
+  border-radius: 50%;
+}
+
+.birds, .hot-air-balloon {
+  position: absolute;
+}
+
+@keyframes riseSun {
+  0% { bottom: -10%; }
+  100% { bottom: 70%; }
+}
+
+@keyframes flyBirds {
+  0% { left: 0; }
+  100% { left: 100%; }
+}
+
+@keyframes floatBalloon {
+  0% { left: -10%; top: 10%; }
+  100% { left: 110%; top: 50%; }
+}
+
+.sun {
+  animation: riseSun 10s linear infinite;
+}
+
+.birds {
+  animation: flyBirds 8s linear infinite;
+  background: url('birds.png') no-repeat;
+  width: 50px;
+  height: 50px;
+  animation-timing-function: ease-in-out;
+}
+
+.hot-air-balloon {
+  animation: floatBalloon 12s linear infinite;
+  background: url('hot-air-balloon.png') no-repeat;
+  width: 100px;
+  height: 150px;
+  animation-timing-function: ease-in-out;
+}
+
+.sun {
+  animation: riseSun 10s linear infinite;
+  box-shadow: 0 0 20px rgba(255, 223, 0, 0.6);
+}
+
+.birds {
+  animation: flyBirds 8s ease-in-out infinite;
+  background: url('birds.png') no-repeat;
+  width: 50px;
+  height: 50px;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes flyBirds {
+  0% { left: 0; top: 20%; }
+  25% { top: 15%; }
+  50% { top: 25%; }
+  75% { top: 20%; }
+  100% { left: 100%; top: 30%; }
+}
